@@ -1,35 +1,39 @@
 <template>
-  <div class="wrapper">
-    <div class="constructor">
-      <span class="text">Image URL:</span>
-      <input type="text" v-model="imgSrc" />
-      <hr>
-      <span class="text">Text:</span>
-      <input type="text" v-model="text" />
-      <span class="text">Link:</span>
-      <input type="text" v-model="link" />
-      <span class="text">Link anchor:</span>
-      <input type="text" v-model="anchor" />
-      <span class="text">Text color:</span><br>
-      <select v-model="textColor">
-        <option value="" selected disabled hidden>Choose text color</option>
-        <option>white</option>
-        <option>yellow</option>
-        <option>green</option>
-        <option>grey</option>
-        <option>blue</option>
-        <option>pink</option>
-        <option>red</option>
-        <option>orange</option>
-      </select>
-      <br>
-      <span class="text">Font size:</span>
-      <input v-model="fontSize" type="text" />
+  <div class="wrapper" >
+    <div class="constructor" data-app>
+      <v-form>
+        <v-text-field
+          v-model="imgSrc"
+          label="Image URL:"
+        ></v-text-field>
+        <v-text-field
+          v-model="text"
+          label="Text:"
+        ></v-text-field>
+        <v-text-field
+          v-model="link"
+          label="Link:"
+        ></v-text-field>
+        <v-text-field
+          v-model="anchor"
+          label="Link anchor:"
+        ></v-text-field>
+        <v-select
+          v-model="textColor"
+          :items="colors"
+          label="Text color:"
+        ></v-select>
+        <v-text-field
+          v-model="fontSize"
+          label="Font size:"
+        ></v-text-field>
+      </v-form>
     </div>
     <div class="preview">
       <div
         class="image-container"
-        :style="{ backgroundImage: 'url(' + imgSrc + ')' }" />
+        :style="{ backgroundImage: 'url(' + imgSrc + ')' }"
+      >
       <div type="text/html" v-draggable>
         <span style="white-space: pre-line;"
         :style="{
@@ -51,12 +55,15 @@
           {{ anchor }}
         </a>
       </div>
+      </div>
+      
     </div>
   </div>
 </template>
 
 <script>
   import { Draggable } from 'draggable-vue-directive'
+  import { colors } from '../data/colors'
 
   export default {
     data: () => {
@@ -66,7 +73,8 @@
         link: '',
         anchor: '',
         fontSize: '',
-        textColor: ''
+        textColor: '',
+        colors
       }
     },
     directives: {
@@ -98,18 +106,17 @@
 
   .constructor {
     padding: 20px;
-    min-width: 200px;
-    max-width: 600px;
+    width: 50%;
     background-color: lightgrey;
   }
 
   .preview {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     flex: 2;
-    background-color: lightgrey;
+    padding: 20px;
   }
 
   .image-container {
