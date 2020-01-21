@@ -1,5 +1,7 @@
 <template>
-  <div class="wrapper" >
+  <div>
+    <Header />
+    <div class="wrapper" >
     <div class="constructor" data-app>
       <v-form>
         <v-text-field
@@ -56,16 +58,20 @@
         </a>
       </div>
       </div>
-      
     </div>
+  </div>
   </div>
 </template>
 
 <script>
+  import Header from './Header'
   import { Draggable } from 'draggable-vue-directive'
   import { colors } from '../data/colors'
 
   export default {
+    components: {
+      Header,
+    },
     data: () => {
       return {
         imgSrc: 'https://vesti.ua/wp-content/uploads/2018/08/299871.jpeg',
@@ -107,7 +113,7 @@
   .constructor {
     padding: 20px;
     width: 50%;
-    background-color: lightgrey;
+    background-color: #f1f1f1;
   }
 
   .preview {
@@ -147,5 +153,18 @@
     padding: 0;
     margin: 10px 0;
     color: black;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .save-btn {
+    display: flex;
+    align-self: flex-end;
+    justify-self: center;
+    margin: 10px;
+    padding: 10px;
   }
 </style>
