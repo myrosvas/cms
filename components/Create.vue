@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="wrapper" >
+    <div class="create-wrapper" >
     <div class="constructor" data-app>
       <v-form>
         <v-text-field
@@ -74,7 +74,7 @@
     },
     data: () => {
       return {
-        imgSrc: 'https://vesti.ua/wp-content/uploads/2018/08/299871.jpeg',
+        imgSrc: 'https://www.impactbnd.com/hubfs/Green%20in%20design.jpg',
         text: '',
         link: '',
         anchor: '',
@@ -104,16 +104,19 @@
 </script>
 
 <style scoped>
-  .wrapper {
+  .create-wrapper {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(197,241,197,1) 54%, rgba(251,184,255,1) 100%);
   }
 
   .constructor {
     padding: 20px;
     width: 50%;
-    background-color: #f1f1f1;
+    background-color: #c5f1c5;
+    border: 5px solid;
   }
 
   .preview {
@@ -123,6 +126,9 @@
     align-items: center;
     flex: 2;
     padding: 20px;
+    border: 5px solid;
+    border-left: none;
+    cursor: url('../assets/nat946.gif'), auto;
   }
 
   .image-container {
